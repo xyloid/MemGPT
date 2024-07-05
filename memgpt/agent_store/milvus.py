@@ -1,3 +1,4 @@
+import os
 import uuid
 from copy import deepcopy
 from typing import Dict, Iterator, List, Optional, cast
@@ -20,7 +21,7 @@ class MilvusStorageConnector(StorageConnector):
 
         assert table_type in [TableType.ARCHIVAL_MEMORY, TableType.PASSAGES], "Milvus only supports archival memory"
         if config.archival_storage_uri:
-            self.client = MilvusClient(uri=config.archival_storage_uri)
+            self.client = MilvusClient(uri=config.archival_storage_uri, key=os.getenv(key="MILVUS_TOKEN"))
             self._create_collection()
         else:
             raise ValueError("Please set `archival_storage_uri` in the config file when using Milvus.")
