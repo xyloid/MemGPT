@@ -23,7 +23,7 @@ class MemoryModule(BaseModel):
     """Base class for memory modules"""
 
     description: Optional[str] = None
-    limit: int = 2000
+    limit: int = 10000 #2000
     value: Optional[Union[List[str], str]] = None
 
     def __setattr__(self, name, value):
@@ -37,7 +37,8 @@ class MemoryModule(BaseModel):
     def check_value_length(cls, v, values):
         if v is not None:
             # Fetching the limit from the values dictionary
-            limit = values.get("limit", 2000)  # Default to 2000 if limit is not yet set
+            # limit = values.get("limit", 2000)  # Default to 2000 if limit is not yet set
+            limit = values.get("limit", 10000)  # Default to 10000 if limit is not yet set
 
             # Check if the value exceeds the limit
             if isinstance(v, str):
@@ -92,7 +93,7 @@ class BaseMemory:
 
 class ChatMemory(BaseMemory):
 
-    def __init__(self, persona: str, human: str, limit: int = 2000):
+    def __init__(self, persona: str, human: str, limit: int = 10000): #2000
         self.memory = {
             "persona": MemoryModule(name="persona", value=persona, limit=limit),
             "human": MemoryModule(name="human", value=human, limit=limit),
