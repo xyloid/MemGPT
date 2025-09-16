@@ -9478,6 +9478,24 @@
             "description": "If True, filters for runs that were created in background mode."
           },
           {
+            "name": "stop_reason",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/StopReasonType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter runs by stop reason.",
+              "title": "Stop Reason"
+            },
+            "description": "Filter runs by stop reason."
+          },
+          {
             "name": "after",
             "in": "query",
             "required": false,
@@ -15375,6 +15393,17 @@
             ],
             "title": "Completed At",
             "description": "The unix timestamp of when the job was completed."
+          },
+          "stop_reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StopReasonType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reason why the job was stopped."
           },
           "metadata": {
             "anyOf": [
@@ -22267,6 +22296,17 @@
             "title": "Completed At",
             "description": "The unix timestamp of when the job was completed."
           },
+          "stop_reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StopReasonType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reason why the job was stopped."
+          },
           "metadata": {
             "anyOf": [
               {
@@ -25508,6 +25548,17 @@
             ],
             "title": "Completed At",
             "description": "The unix timestamp of when the job was completed."
+          },
+          "stop_reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StopReasonType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reason why the run was stopped."
           },
           "metadata": {
             "anyOf": [
